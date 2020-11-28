@@ -1,33 +1,57 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<style type:"text/css">
+		#bg {
+            position: fixed; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%;
+          }
+          #bg img {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            margin: auto; 
+            min-width: 50%;
+            min-height: 50%;
+          }
+	</style>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
 
 window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer", {
 		title:{
-			text: "My First Chart in CanvasJS"              
+			text: "Music Data API : List of Fans"              
 		},
 		data: [              
 		{
 			// Change type to "doughnut", "line", "splineArea", etc.
 			type: "column",
 			dataPoints: [
-				{ label: "apple",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-				{ label: "grape",  y: 28  }
+				{ label: "Blackpink",  y: 100  },
+				{ label: "Justin Bieber", y: 15  },
+				{ label: "IZ*ONE", y: 25  },
+				{ label: "SNSD",  y: 30  },
+				{ label: "Tobu",  y: 28  }
 			]
 		}
 		]
 	});
 	chart.render();
+
 }
 </script>
 </head>
 <body>
-<div id="chartContainer" style="height: 300px; width: 50%;"></div>
+	<div id="bg">
+        <img src="my_image.jpg">
+    </div>
+<div id="chartContainer" style="border: white; position: absolute; top: 20%; margin-left: 25%; margin-bottom: 25%; width: 50%; height: 300px;"></div>
 </body>
 </html>
+
