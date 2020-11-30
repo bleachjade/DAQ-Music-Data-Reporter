@@ -1,9 +1,10 @@
 from flask import Flask, request, json, Response
 from pymongo import MongoClient
+from data.config import *
 
 class MongoAPI:
     def __init__(self, data):
-        self.client = MongoClient("mongodb://localhost:5000/")  
+        self.client = MongoClient(f"mongodb+srv://{username}:{password}@cluster0.mo20d.mongodb.net/Song?retryWrites=true&w=majority")  
       
         database = data['database']
         collection = data['collection']
@@ -44,8 +45,8 @@ class MongoAPI:
 
 if __name__ == '__main__':
     data = {
-        "database": "Song",
-        "collection": "Deezer",
+        "database": f"{database_name}",
+        "collection": f"{collection_name}",
     }
     mongo_obj = MongoAPI(data)
     print(json.dumps(mongo_obj.read(), indent=4))
