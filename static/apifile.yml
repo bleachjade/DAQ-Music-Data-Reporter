@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  description: This API provides a music data information.
+  title: Music Data API
+  version: 1.0.0
+servers:
+- url: /music-api/v1
+paths:
+  /artists:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Artists'
+                type: array
+          description: Success
+      summary: Returns a list of artists.
+  /artists/{artist_id}:
+    parameters:
+      - name: artist_id
+        in: path
+        required: true
+        schema:
+          type : integer
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Artist_Individual'
+                type: array
+          description: Success
+      summary: Returns an individual name of artists by order.
+components:
+  schemas:
+    Artists:
+      type: object
+      properties:
+        name:
+          type: array
+          items:
+            type: string
+    Artist_Individual:
+      type: object
+      properties:
+        name:
+          type: string

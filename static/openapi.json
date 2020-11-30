@@ -30,6 +30,36 @@
         },
         "summary": "Returns a list of artists."
       }
+    },
+    "/artists/{artist_id}": {
+      "parameters": [
+        {
+          "name": "artist_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Artist_Individual"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns an individual name of artists by order."
+      }
     }
   },
   "components": {
@@ -42,6 +72,14 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "Artist_Individual": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
           }
         }
       }
