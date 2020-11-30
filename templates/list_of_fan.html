@@ -16,6 +16,35 @@
 
 <script src="../static/js/list_of_fan.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title:{
+                text: "Music Data API : List of Fans"              
+            },
+            data: [              
+            {
+                // Change type to "doughnut", "line", "splineArea", etc.
+                type: "column",
+                dataPoints: [
+                { label: 'BLACKPINK', y: 1085868 },
+                { label: 'BTS', y: 1883151 },
+                { label: 'Taylor Swift', y: 8088542 },
+                { label: 'Harry Styles', y: 646038 },
+                { label: 'The Weeknd', y: 7807369 },
+                { label: 'Post Malone', y: 2652943 },
+                { label: 'Joji', y: 225806 },
+                { label: 'The 1975', y: 458377 },
+                { label: 'Phum Viphurit', y: 6610 },
+                { label: 'Arctic Monkeys', y: 3456869 }
+              ]
+                
+            }
+            ]
+        });
+        chart.render();
+    } 
+</script>
 </body>
 </html>
 
