@@ -1,5 +1,42 @@
 <!DOCTYPE HTML>
 <html>
+  <head>
+     <script src="https://unpkg.com/@mongodb-js/charts-embed-dom@beta"></script>
+  </head>
+  <style>
+    #chart {
+      width: 800px;
+      height: 500px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    div {text-align: center;}
+
+  </style>
+  <body>
+    <div id="chart"></div>
+    <div>
+      <button onclick="refresh()">Refresh</button></div>
+    </div>
+    
+    <script>
+      const sdk = new ChartsEmbedSDK({
+        baseUrl: 'https://charts.mongodb.com/charts-project---daq-nkseb',
+        showAttribution: false
+      });
+
+      const chart = sdk.createChart({ chartId: '1c9027a3-8b1d-4a5c-b2dc-ffab3dd47b88' });
+      chart.render(document.getElementById('chart'));
+
+      function refresh(){
+        chart.refresh();
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <html>
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,4 +55,4 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
-
+  -->
