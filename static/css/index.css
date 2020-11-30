@@ -7,6 +7,8 @@ ul {
     padding: 0;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
 }
 
 ul li {
@@ -22,7 +24,9 @@ ul li {
 .top-container {
     display: flex;
     justify-content: center;
-    background-color: aqua;
+    border-radius: 0.5em;
+    border: 1px solid #45D12E;
+    box-shadow: 0.7em 0.7em lightblue;
 }
 
 .top-wraper {
@@ -39,11 +43,17 @@ ul li {
     -webkit-text-fill-color: transparent;
 }
 
+.wrap-content {
+    display: flex;
+    width: 100%;
+}
+
 .top-wraper img {
     width: 100%;
 }
 
 button {
+    background-color: white;
     color: #45D12E;
     border: 1px solid #45D12E;
     border-radius: 0.5em;
@@ -62,5 +72,61 @@ button:hover {
 @media screen and (max-width: 1600px) {
     .top-wraper img {
         width: 70%;
+    }
+}
+@media screen and (max-width: 1080px) {
+    .top-wraper h2 {
+        font-size: 2.5em;
+    }
+    .top-wraper img {
+        width: 70%;
+    }
+    button {
+        height: 2.5em;
+        font-size: 1.1em;
+    }
+}
+@media screen and (max-width: 888px) {
+    .top-wraper h2 {
+        font-size: 2.2em;
+    }
+    .top-wraper img {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 736px) {
+    .top-wraper h2 {
+        font-size: 2em;
+    }
+    .top-wraper img {
+        width: 100%;
+    }
+    button {
+        height: 2.5em;
+        font-size: 1.1em;
+        transition: all 0.2s ease-in-out;
+    }
+    .wrap-content {
+        display: block;
+    }
+    ul {
+        flex-direction: row;
+    }
+}
+@media screen and (max-width: 666px) {
+    .main-content {
+        padding: 2em 5em 0 5em;
+    }
+}
+@media screen and (max-width: 505px) {
+    .main-content {
+        padding: 2em 2em 0 2em;
+    }
+}
+@media screen and (max-width: 404px) {
+    button {
+        height: 2.3em;
+        font-size: 0.8em;
+        transition: all 0.2s ease-in-out;
     }
 }
