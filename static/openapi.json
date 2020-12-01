@@ -21,7 +21,7 @@
                   "items": {
                     "$ref": "#/components/schemas/Artists"
                   },
-                  "type": "array"
+                  "type": "object"
                 }
               }
             },
@@ -29,6 +29,66 @@
           }
         },
         "summary": "Returns a list of artists."
+      }
+    },
+    "/artists/albums": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsAlbumNumber"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's album."
+      }
+    },
+    "/artists/fans": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsFansNumber"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's fans."
+      }
+    },
+    "/artists/contacts": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsContact"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's contacts information."
       }
     },
     "/artists/{artist_id}": {
@@ -60,6 +120,26 @@
         },
         "summary": "Returns an individual name of artists by order."
       }
+    },
+    "/artists/songs": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsSongs"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's songs in database."
+      }
     }
   },
   "components": {
@@ -81,6 +161,26 @@
           "name": {
             "type": "string"
           }
+        }
+      },
+      "ArtistsAlbumNumber": {
+        "type": "object"
+      },
+      "ArtistsFansNumber": {
+        "type": "object"
+      },
+      "ArtistsContact": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "ArtistsSongs": {
+        "type": "object",
+        "properties": {
+          "type": "array"
         }
       }
     }

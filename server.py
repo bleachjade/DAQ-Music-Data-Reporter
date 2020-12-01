@@ -97,7 +97,7 @@ def mongo_read_artists_contacts():
     artist_list = {}
 
     for i in range(len(convert1)):
-        artist_list[str(convert1[i]['artist'])] = str(convert1[i]['contacts'][0])
+        artist_list[str(convert1[i]['artist'])] = convert1[i]['contacts'][0]
 
     response = str(artist_list)   
     return Response(response=json.dumps(response),
@@ -132,36 +132,39 @@ def mongo_read_one(artist_id):
                     status=200,
                     mimetype='application/json')
 
-# @app.route('/artists/songs', methods=['GET'])
-# def mongo_read_artists_songs():
-#     data = {
-#         "database": f"{database_name}",
-#         "collection": f"{collection_name}",
-#     }
+@app.route('/artists/songs', methods=['GET'])
+def mongo_read_artists_songs():
+    data = {
+        "database": f"{database_name}",
+        "collection": f"{collection_name}",
+    }
 
-#     if data is None or data == {}:
-#         return Response(response=json.dumps({"Error": "Please provide connection information"}),
-#                         status=400,
-#                         mimetype='application/json')
-#     obj1 = MongoAPI(data)
-#     convert1 = obj1.read()
-#     artist_list = {}
-
-#     print("artist")
-#     print(convert1[0]['artist'])
+    if data is None or data == {}:
+        return Response(response=json.dumps({"Error": "Please provide connection information"}),
+                        status=400,
+                        mimetype='application/json')
+    obj1 = MongoAPI(data)
+    convert1 = obj1.read()
+    artist_list = {}
+    all_tracks = []
     
+    print(int(len(convert1)))
 
-#     for i in range(len(convert1)):
-#         for a in range(len(convert1[i]['top_tracks'])):
-#             track = []
-#             artist_list[str(convert1[i]['artist'])] = (track.append(convert1[i]['top_tracks'][i][a]['title']))
-#             print("tracks: ")
-#             print(track[0][0]['title'])
+    for i in range(int(len(convert1))):
+        track = []
 
-#     response = str(artist_list)   
-#     return Response(response=json.dumps(response),
-#                     status=200,
-#                     mimetype='application/json')
+        for a in range(len(convert1[i]['top_tracks'])):
+            track.append(convert1[i]['top_tracks'][a]['title'])
+        all_tracks.append(track)
+
+    for i in range(int(len(convert1))):
+        for a in range(len(all_tracks)):
+            artist_list[str(convert1[i]['artist'])] = (all_tracks[i])
+
+    response = str(artist_list)   
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
 
 
 @app.route('/api/docs')
