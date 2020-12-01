@@ -35,6 +35,75 @@ def mongo_read_artists():
                     status=200,
                     mimetype='application/json')
 
+@app.route('/artists/albums', methods=['GET'])
+def mongo_read_artists_album():
+    data = {
+        "database": f"{database_name}",
+        "collection": f"{collection_name}",
+    }
+
+    if data is None or data == {}:
+        return Response(response=json.dumps({"Error": "Please provide connection information"}),
+                        status=400,
+                        mimetype='application/json')
+    obj1 = MongoAPI(data)
+    convert1 = obj1.read()
+    artist_list = {}
+
+    for i in range(len(convert1)):
+        artist_list[str(convert1[i]['artist'])] = str(convert1[i]['number_of_albums'])
+
+    response = str(artist_list)   
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+@app.route('/artists/fans', methods=['GET'])
+def mongo_read_artists_fans():
+    data = {
+        "database": f"{database_name}",
+        "collection": f"{collection_name}",
+    }
+
+    if data is None or data == {}:
+        return Response(response=json.dumps({"Error": "Please provide connection information"}),
+                        status=400,
+                        mimetype='application/json')
+    obj1 = MongoAPI(data)
+    convert1 = obj1.read()
+    artist_list = {}
+
+    for i in range(len(convert1)):
+        artist_list[str(convert1[i]['artist'])] = str(convert1[i]['number_of_fans'])
+
+    response = str(artist_list)   
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+@app.route('/artists/contacts', methods=['GET'])
+def mongo_read_artists_contacts():
+    data = {
+        "database": f"{database_name}",
+        "collection": f"{collection_name}",
+    }
+
+    if data is None or data == {}:
+        return Response(response=json.dumps({"Error": "Please provide connection information"}),
+                        status=400,
+                        mimetype='application/json')
+    obj1 = MongoAPI(data)
+    convert1 = obj1.read()
+    artist_list = {}
+
+    for i in range(len(convert1)):
+        artist_list[str(convert1[i]['artist'])] = str(convert1[i]['contacts'][0])
+
+    response = str(artist_list)   
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
 @app.route('/artists/<artist_id>', methods=['GET'])
 def mongo_read_one(artist_id):
     data = {
@@ -62,6 +131,38 @@ def mongo_read_one(artist_id):
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
+
+# @app.route('/artists/songs', methods=['GET'])
+# def mongo_read_artists_songs():
+#     data = {
+#         "database": f"{database_name}",
+#         "collection": f"{collection_name}",
+#     }
+
+#     if data is None or data == {}:
+#         return Response(response=json.dumps({"Error": "Please provide connection information"}),
+#                         status=400,
+#                         mimetype='application/json')
+#     obj1 = MongoAPI(data)
+#     convert1 = obj1.read()
+#     artist_list = {}
+
+#     print("artist")
+#     print(convert1[0]['artist'])
+    
+
+#     for i in range(len(convert1)):
+#         for a in range(len(convert1[i]['top_tracks'])):
+#             track = []
+#             artist_list[str(convert1[i]['artist'])] = (track.append(convert1[i]['top_tracks'][i][a]['title']))
+#             print("tracks: ")
+#             print(track[0][0]['title'])
+
+#     response = str(artist_list)   
+#     return Response(response=json.dumps(response),
+#                     status=200,
+#                     mimetype='application/json')
+
 
 @app.route('/api/docs')
 def get_docs():

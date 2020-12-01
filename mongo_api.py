@@ -4,7 +4,7 @@ from data.config import *
 
 class MongoAPI:
     def __init__(self, data):
-        self.client = MongoClient(f"mongodb+srv://{username}:{password}@cluster0.mo20d.mongodb.net/Song?retryWrites=true&w=majority")  
+        self.client = MongoClient(f"mongodb+srv://{username}:{password}@cluster0.mo20d.mongodb.net/Song?retryWrites=true&w=majority", tls=True, tlsAllowInvalidCertificates=True)  
       
         database = data['database']
         collection = data['collection']
