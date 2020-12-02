@@ -11,16 +11,105 @@
     }
   ],
   "paths": {
-    "/songs": {
+    "/artists": {
       "get": {
-        "operationId": "controller_get_songs",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/Song"
+                    "$ref": "#/components/schemas/Artists"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a list of artists."
+      }
+    },
+    "/artists/albums": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsAlbumNumber"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's album."
+      }
+    },
+    "/artists/fans": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsFansNumber"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's fans."
+      }
+    },
+    "/artists/contacts": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsContact"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's contacts information."
+      }
+    },
+    "/artists/{artist_id}": {
+      "parameters": [
+        {
+          "name": "artist_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Artist_Individual"
                   },
                   "type": "array"
                 }
@@ -29,22 +118,69 @@
             "description": "Success"
           }
         },
-        "summary": "Returns a list of songs.",
-        "x-openapi-router-controller": "openapi_server.controllers.default_controller"
+        "summary": "Returns an individual name of artists by order."
+      }
+    },
+    "/artists/songs": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ArtistsSongs"
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Returns a numbers of each artist's songs in database."
       }
     }
   },
   "components": {
     "schemas": {
-      "Song": {
+      "Artists": {
         "type": "object",
         "properties": {
-          "song_id": {
-            "type": "string"
-          },
+          "name": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Artist_Individual": {
+        "type": "object",
+        "properties": {
           "name": {
             "type": "string"
           }
+        }
+      },
+      "ArtistsAlbumNumber": {
+        "type": "object"
+      },
+      "ArtistsFansNumber": {
+        "type": "object"
+      },
+      "ArtistsContact": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "ArtistsSongs": {
+        "type": "object",
+        "properties": {
+          "type": "array"
         }
       }
     }
