@@ -30,7 +30,7 @@ def mongo_read_artists():
     for i in range(len(convert1)):
         artist_list['name'].append(convert1[i]['artist'])
 
-    response = str(artist_list)   
+    response = (artist_list)   
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -53,7 +53,7 @@ def mongo_read_artists_album():
     for i in range(len(convert1)):
         artist_list[str(convert1[i]['artist'])] = str(convert1[i]['number_of_albums'])
 
-    response = str(artist_list)   
+    response = (artist_list)   
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -76,7 +76,7 @@ def mongo_read_artists_fans():
     for i in range(len(convert1)):
         artist_list[str(convert1[i]['artist'])] = str(convert1[i]['number_of_fans'])
 
-    response = str(artist_list)   
+    response = (artist_list)   
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -99,7 +99,7 @@ def mongo_read_artists_contacts():
     for i in range(len(convert1)):
         artist_list[str(convert1[i]['artist'])] = convert1[i]['contacts'][0]
 
-    response = str(artist_list)   
+    response = (artist_list)   
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -119,6 +119,7 @@ def mongo_read_one(artist_id):
     obj1 = MongoAPI(data)
     convert1 = obj1.read()
     artist_list = {'name':[]}
+    jsonobg = {}
 
     for i in range(len(convert1)):
         artist_list['name'].append(convert1[i]['artist'])
@@ -126,8 +127,9 @@ def mongo_read_one(artist_id):
     print(artist_list)
     print(artist_list['name'][int(artist_id)])
 
-    response = "{'name': '" + str(artist_list['name'][int(artist_id)]) + "'}"
+    jsonobg['artist_name'] = str(artist_list['name'][int(artist_id)])
 
+    response = jsonobg
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -161,7 +163,7 @@ def mongo_read_artists_songs():
         for a in range(len(all_tracks)):
             artist_list[str(convert1[i]['artist'])] = (all_tracks[i])
 
-    response = str(artist_list)   
+    response = (artist_list)   
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -173,11 +175,6 @@ def get_docs():
     return render_template('swaggerui.html')
   
 if __name__ == '__main__':
-    data = {
-        "database": "Song",
-        "collection": "Deezer",
-    }
-    mongo_obj = MongoAPI(data)
     print("*** SWAGGER UI must run in INCOGNITO MODE or CLEAR THE BROWSER CATCH ***")
     app.run(debug=True, port=5001, host='0.0.0.0')
 
