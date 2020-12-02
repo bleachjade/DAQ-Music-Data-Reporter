@@ -1,11 +1,77 @@
-#chart {
-    width: 80%;
-    height: 80vh;
-    margin: 1.7em auto;
-    padding: 2em;
-    border: 1px solid #ccc;
+.numOfFans-chart {
+    background-color: azure;
+}
+
+.numOfAlbums-chart {
+    background-color: rgb(216, 170, 189);
+}
+
+.listOfContract-chart {
+    background-color: bisque;
+}
+
+.TH-chart {
+    background-color: rgb(238, 77, 56);
+}
+
+.US-chart {
+    background-color: rgb(169, 153, 199);
 }
 
 div {
     text-align: center;
+}
+
+.bt-link a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+  
+.bt-link a:hover, a:active {
+    background-color: green;
+    color: white;
+}
+
+.w3-panel, .w3-card {
+    border-radius: 20px 20px 20px 20px;
+    width: 80%; 
+    height:600px;
+    margin: 1.7em auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.button-refresh {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(19, 19, 19);
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px rgb(105, 80, 47);
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+.button-refresh:hover {
+    background-color: #b3d8a4;
+    color: #ffffff;
+    box-shadow: 0 9px rgb(29, 49, 32);
+}
+
+.button-refresh:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

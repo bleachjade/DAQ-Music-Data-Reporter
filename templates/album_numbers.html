@@ -7,7 +7,7 @@
     <meta name="HandheldFriendly" content="True">
 	<link rel="stylesheet" href="../static/css/chart.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<title>Artist Fans</title>
+	<title>Artist Albums</title>
 	<script>
 	window.onload = function() {
 
@@ -17,10 +17,10 @@
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "List of Artist Fans"
+			text: "List of Artist Albums Number"
 		},
 		axisY: {
-			title: "Number of Fans",
+			title: "Number of Album",
 			titleFontSize: 24,
 			includeZero: true
 		},
@@ -49,16 +49,16 @@
 
 	console.log(dataPoints)
 
-	$.getJSON("http://localhost:5001/artists/fans", (data) => {addData(data), console.log(data)});
+	$.getJSON("http://localhost:5001/artists/albums", (data) => {addData(data), console.log(data)});
 
 	}
 	</script>
 </head>
-<body class="numOfFans-chart">
-<div class="w3-panel w3-card" style="margin-top: 50px;">
-	<div id="chartContainer" style="width: 70%; height:500px; margin: 1.7em auto;"></div>
-</div>
-<div class="bt-link "><a href="../templates/home.html">back to HOME page</a></div>
+<body class="numOfAlbums-chart">
+	<div class="w3-panel w3-card" style="margin-top: 50px;">
+		<div id="chartContainer" style="width: 70%; height:500px; margin: 1.7em auto;"></div>
+	</div>
+	<div class="bt-link "><a href="../templates/home.html">back to HOME page</a></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>

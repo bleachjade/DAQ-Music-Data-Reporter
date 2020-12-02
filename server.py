@@ -1,8 +1,11 @@
 from flask import Flask, Response, render_template
+from flask_cors import CORS
 from mongo_api import *
 from data.config import *
 
 app = Flask(__name__)
+
+CORS(app)
 
 #SWAGGER UI must run in INCOGNITO MODE or CLEAR THE BROWSER CATCH
 
