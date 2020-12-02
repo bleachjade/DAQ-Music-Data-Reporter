@@ -10,10 +10,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
 	title: {
-		text: "List of Artist Fans"
+		text: "List of Artist Albums Number"
 	},
 	axisY: {
-		title: "Number of Fans",
+		title: "Number of Album",
 		titleFontSize: 24,
 		includeZero: true
 	},
@@ -42,7 +42,7 @@ function addData(data) {
 
 console.log(dataPoints)
 
-$.getJSON("http://localhost:5001/artists/fans", (data) => {addData(data), console.log(data)});
+$.getJSON("http://localhost:5001/artists/albums", (data) => {addData(data), console.log(data)});
 
 }
 </script>
