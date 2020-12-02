@@ -1,5 +1,37 @@
 <!DOCTYPE HTML>
 <html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+      <meta name="HandheldFriendly" content="True">
+      <script src="https://unpkg.com/@mongodb-js/charts-embed-dom@beta"></script>
+      <link rel="stylesheet" href="../static/css/chart.css">
+  </head>
+  <body>
+    <a href="../templates/home.html">back to HOME page</a>
+    <div id="chart"></div>
+    <div>
+      <button onclick="refresh()">Refresh</button></div>
+    </div>
+    
+    <script>
+      const sdk = new ChartsEmbedSDK({
+        baseUrl: 'https://charts.mongodb.com/charts-project---daq-nkseb',
+        showAttribution: false
+      });
+
+      const chart = sdk.createChart({ chartId: '1c9027a3-8b1d-4a5c-b2dc-ffab3dd47b88' });
+      chart.render(document.getElementById('chart'));
+
+      function refresh(){
+        chart.refresh();
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <html>
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +48,35 @@
 
 <script src="../static/js/list_of_fan.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title:{
+                text: "Music Data API : List of Fans"              
+            },
+            data: [              
+            {
+                // Change type to "doughnut", "line", "splineArea", etc.
+                type: "column",
+                dataPoints: [
+                { label: 'BLACKPINK', y: 1085868 },
+                { label: 'BTS', y: 1883151 },
+                { label: 'Taylor Swift', y: 8088542 },
+                { label: 'Harry Styles', y: 646038 },
+                { label: 'The Weeknd', y: 7807369 },
+                { label: 'Post Malone', y: 2652943 },
+                { label: 'Joji', y: 225806 },
+                { label: 'The 1975', y: 458377 },
+                { label: 'Phum Viphurit', y: 6610 },
+                { label: 'Arctic Monkeys', y: 3456869 }
+              ]
+                
+            }
+            ]
+        });
+        chart.render();
+    } 
+</script>
 </body>
 </html>
-
+  -->

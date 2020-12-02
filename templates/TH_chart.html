@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <script src="https://unpkg.com/@mongodb-js/charts-embed-dom@beta"></script>
+    <link rel="stylesheet" href="../static/css/chart.css">
+    <title>TH</title>
+</head>
+<body>
+    <a href="../templates/home.html">back to HOME page</a>
+    <div id="chart"></div>
+    <div>
+      <button onclick="refresh()">Refresh</button></div>
+    </div>
+    
+    <script>
+      const sdk = new ChartsEmbedSDK({
+        baseUrl: 'https://charts.mongodb.com/charts-project---daq-nkseb',
+        showAttribution: false
+      });
+
+      const chart = sdk.createChart({ chartId: 'a7a87683-4b49-4385-8c99-18769e026d7a' });
+      chart.render(document.getElementById('chart'));
+
+      function refresh(){
+        chart.refresh();
+      }
+    </script>
+</body>
+</html>
