@@ -104,13 +104,14 @@ button:hover {
     button {
         height: 2.5em;
         font-size: 1.1em;
+        margin: 0.5em;
         transition: all 0.2s ease-in-out;
     }
     .wrap-content {
         display: block;
     }
     ul {
-        flex-direction: row;
+        flex-direction: column;
     }
 }
 @media screen and (max-width: 666px) {
