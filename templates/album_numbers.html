@@ -1,54 +1,64 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<script>
-window.onload = function() {
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+	<link rel="stylesheet" href="../static/css/chart.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title>Artist Albums</title>
+	<script>
+	window.onload = function() {
 
-var dataPoints = [];
+	var dataPoints = [];
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title: {
-		text: "List of Artist Albums Number"
-	},
-	axisY: {
-		title: "Number of Album",
-		titleFontSize: 24,
-		includeZero: true
-	},
-    axisX: {
-		title: "Artists",
-		titleFontSize: 24
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "Artist Name",
-		dataPoints: dataPoints
-	}]
-});
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: "List of Artist Albums Number"
+		},
+		axisY: {
+			title: "Number of Album",
+			titleFontSize: 24,
+			includeZero: true
+		},
+		axisX: {
+			title: "Artists",
+			titleFontSize: 24
+		},
+		data: [{
+			type: "column",
+			yValueFormatString: "Artist Name",
+			dataPoints: dataPoints
+		}]
+	});
 
-function addData(data) {
-    console.log(Object.keys(data)[1])
-	for (var i = 0; i < 10; i++) {
-		dataPoints.push({
-			label: String(Object.keys(data)[i]),
-			y: parseInt(Object.values(data)[i])
-		});
+	function addData(data) {
+		console.log(Object.keys(data)[1])
+		for (var i = 0; i < 10; i++) {
+			dataPoints.push({
+				label: String(Object.keys(data)[i]),
+				y: parseInt(Object.values(data)[i])
+			});
+		}
+		chart.render();
+
 	}
-	chart.render();
 
-}
+	console.log(dataPoints)
 
-console.log(dataPoints)
+	$.getJSON("http://localhost:5001/artists/albums", (data) => {addData(data), console.log(data)});
 
-$.getJSON("http://localhost:5001/artists/albums", (data) => {addData(data), console.log(data)});
-
-}
-</script>
+	}
+	</script>
 </head>
-<body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<body class="numOfAlbums-chart">
+	<div class="w3-panel w3-card" style="margin-top: 50px;">
+		<div id="chartContainer" style="width: 70%; height:500px; margin: 1.7em auto;"></div>
+	</div>
+	<div class="bt-link "><a href="../templates/home.html">back to HOME page</a></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>

@@ -2,6 +2,10 @@
     background-color: azure;
 }
 
+.numOfAlbums-chart {
+    background-color: rgb(216, 170, 189);
+}
+
 .listOfContract-chart {
     background-color: bisque;
 }
