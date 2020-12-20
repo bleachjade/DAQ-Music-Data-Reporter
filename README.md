@@ -2,6 +2,9 @@
 # DAQ-Music-Data-Reporter
 A Music Data API and Data Display app. Our API can be used to report various information about music. It can also be used to view the song’s popularity over the past few days or a certain amount of time, as well as checking if the song is available for streaming in that country or not.
 
+# Disclaimer
+*** For the number of albums and list of artists fans which uses Jquery graphing and JSON object from our own APIs will require the user to run the API server locally (navigate to project directory and run "python3 server.py") and navigate to the website, this will make the website to be able to gather JSON object data from the localhost and graph the result ***
+
 # Members
 Department of Computer Engineering, Software and Knowledge Engineering.
 
